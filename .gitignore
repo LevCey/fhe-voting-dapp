@@ -1,0 +1,20 @@
+# Node modules
+node_modules/
+
+# Hardhat artifacts
+artifacts/
+cache/
+typechain/
+
+# Env files
+.env
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.DS_Store
+
+# Deploy scripts output (isteğe bağlı)
+deployments/

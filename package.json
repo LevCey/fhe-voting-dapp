@@ -17,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/LevCey/fhe-voting-dapp/issues"
   },
-  "homepage": "https://github.com/LevCey/fhe-voting-dapp#readme"
+  "homepage": "https://github.com/LevCey/fhe-voting-dapp#readme",
+  "devDependencies": {
+    "@types/node": "^24.1.0",
+    "hardhat": "^2.26.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
 }
