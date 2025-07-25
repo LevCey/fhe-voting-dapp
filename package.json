@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/LevCey/fhe-voting-dapp#readme",
   "devDependencies": {
+    "@fhevm/hardhat-plugin": "^0.0.1-0",
     "@nomicfoundation/hardhat-toolbox": "^6.1.0",
     "@types/node": "^24.1.0",
     "hardhat": "^2.26.1",
