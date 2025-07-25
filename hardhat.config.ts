@@ -7,7 +7,11 @@ dotenv.config();
 const config: HardhatUserConfig = {
   solidity: "0.8.20",
   networks: {
-    // deploy sırasında kullanılacak (şimdilik boş bırakabilirsin)
+    zama: {
+      url: "https://sepolia.fhe.ethereum.org",
+      chainId: 11155420,
+      accounts: [process.env.PRIVATE_KEY!],
+    },
   },
 };
 
