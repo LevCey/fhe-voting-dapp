@@ -1,10 +1,7 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
+import "@fhevm/hardhat-plugin"; // <- Bu her zaman çağrılmalı
 import * as dotenv from "dotenv";
-if (process.env.ENABLE_FHEVM === "true") {
-  require("@fhevm/hardhat-plugin");
-}
-
 
 dotenv.config();
 
