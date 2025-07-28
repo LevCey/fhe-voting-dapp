@@ -9,12 +9,15 @@
   "keywords": [],
   "author": "",
   "license": "MIT",
+  "dependencies": {
+    "encrypted-types": "^0.0.4",
+    "@fhevm/solidity": "^0.7.0",
+    "@zama-fhe/oracle-solidity": "^0.1.0" 
+  },
   "devDependencies": {
     "@fhevm/hardhat-plugin": "^0.0.1-6",
-    "@fhevm/solidity": "^0.7.0",
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
     "@nomicfoundation/hardhat-ethers": "^3.0.0",
-    "@zama-fhe/oracle-solidity": "^0.0.1",
     "chai": "^4.2.0",
     "dotenv": "^16.3.1",
     "ethers": "^6.0.0",

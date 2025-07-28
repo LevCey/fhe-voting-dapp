@@ -4,7 +4,6 @@ pragma solidity ^0.8.24;
 import "@fhevm/solidity/lib/FHE.sol";
 import "@fhevm/solidity/lib/FheTypes.sol"; // Buradaki typo'yu (FheType yerine FheTypes) düzeltin
 import "@fhevm/solidity/lib/Impl.sol";
-import "@zama-fhe/oracle-solidity/interfaces/IZamaOracle.sol";
 import "encrypted-types/EncryptedTypes.sol";
 
 /// @title A FHE-enabled Voting contract
