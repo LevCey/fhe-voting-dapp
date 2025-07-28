@@ -2,9 +2,9 @@
 pragma solidity ^0.8.24;
 
 import "@fhevm/solidity/lib/FHE.sol";
-import "@fhevm/solidity/lib/FheTypes.sol"; 
 import "@fhevm/solidity/lib/Impl.sol";
 import "encrypted-types/EncryptedTypes.sol";
+import "./ZamaConfig.sol"; 
 
 /// @title A FHE-enabled Voting contract
 /// @dev This contract allows users to vote privately using FHE.

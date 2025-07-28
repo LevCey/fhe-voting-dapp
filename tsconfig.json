@@ -21,5 +21,4 @@
     "./types",
     "./type-extensions.d.ts" // BURAYI EKLEYİN
   ],
-  "files": [],
 }
