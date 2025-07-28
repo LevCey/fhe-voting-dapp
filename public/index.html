@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FHE Voting dApp</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
+        .container { max-width: 800px; margin: 20px auto; padding: 25px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); background-color: #fff; }
+        h1, h2, h3 { color: #0056b3; }
+        button { background-color: #007bff; color: white; padding: 12px 20px; margin: 8px 5px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.3s ease; }
+        button:hover { background-color: #0056b3; }
+        button:disabled { background-color: #cccccc; cursor: not-allowed; }
+        input[type="text"], input[type="number"] { width: calc(100% - 22px); padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; }
+        hr { border: 0; border-top: 1px solid #eee; margin: 25px 0; }
+        .status-message { margin-top: 20px; padding: 10px; border-radius: 5px; }
+        #status { background-color: #e6ffe6; color: #1a661a; border: 1px solid #8cff8c; }
+        #error { background-color: #ffe6e6; color: #cc0000; border: 1px solid #ff8c8c; }
+        .candidate-list { margin-top: 15px; }
+        .candidate-item { background-color: #e9ecef; padding: 10px; border-radius: 5px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .candidate-item button { margin-left: 10px; flex-shrink: 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FHE Voting dApp</h1>
+        <p>Bu dApp, Zama FHEVM kullanarak gizli oylama yapmanızı sağlar. Oylar zincir üstünde şifrelenir.</p>
+
+        <h2>1. Sözleşmeyi Bağla</h2>
+        <div>
+            <label for="contractAddress">Dağıtılan Sözleşme Adresi:</label>
+            <input type="text" id="contractAddress" size="42" placeholder="Sözleşme adresini yapıştırın">
+            <button id="connectContract">Sözleşmeye Bağlan</button>
+            <button id="loadCandidates" disabled>Adayları Yükle</button>
+        </div>
+
+        <hr>
+
+        <h2>2. Oylama Yönetimi (Sadece Sahip)</h2>
+        <div>
+            <button id="startVotingBtn" disabled>Oylamayı Başlat</button>
+            <button id="endVotingBtn" disabled>Oylamayı Bitir</button>
+            <p>Oylama Durumu: <strong id="votingStatus">Kapalı</strong></p>
+        </div>
+
+        <hr>
+
+        <h2>3. Adaylar ve Oy Ver</h2>
+        <h3>Adaylar (<span id="candidatesCount">0</span> Aday):</h3>
+        <div id="candidateList" class="candidate-list">
+            </div>
+        <button id="refreshVotesBtn" disabled>Oyları Yenile (Şifreli)</button>
+        <p>Seçtiğiniz Aday ID: <strong id="selectedCandidateId">Yok</strong></p>
+        <button id="voteBtn" disabled>Oy Ver (Encrypted)</button>
+        <p>Oy kullandın mı?: <strong id="hasVotedStatus">Hayır</strong></p>
+
+        <hr>
+
+        <h2>4. Oylama Sonuçları (Sadece Sahip Deşifre Edebilir)</h2>
+        <p>Sadece sözleşme sahibi, oylama bittikten sonra şifreli oyları deşifre edebilir.</p>
+        <button id="getDecryptedResultsBtn" disabled>Şifresi Çözülmüş Sonuçları Al</button>
+        <div id="decryptedResults" class="candidate-list">
+            </div>
+
+        <div id="status" class="status-message"></div>
+        <div id="error" class="status-message"></div>
+    </div>
+
+    <script src="./bundle.js" type="module"></script>
+</body>
+</html>

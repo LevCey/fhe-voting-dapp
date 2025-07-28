@@ -1,8 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-import { FHE, euint32, externalEuint32 } from "@fhevm/solidity/lib/FHE.sol";
-import { SepoliaConfig } from "@fhevm/solidity/config/ZamaConfig.sol";
+import "@fhevm/solidity/lib/FHE.sol";
+import "@fhevm/solidity/lib/FheTypes.sol"; // Buradaki typo'yu (FheType yerine FheTypes) düzeltin
+import "@fhevm/solidity/lib/Impl.sol";
+import "@zama-fhe/oracle-solidity/interfaces/IZamaOracle.sol";
+import "encrypted-types/EncryptedTypes.sol";
 
 /// @title A FHE-enabled Voting contract
 /// @dev This contract allows users to vote privately using FHE.
