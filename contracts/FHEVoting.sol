@@ -2,7 +2,7 @@
 pragma solidity ^0.8.24;
 
 import "@fhevm/solidity/lib/FHE.sol";
-import "@fhevm/solidity/lib/FheTypes.sol"; // Buradaki typo'yu (FheType yerine FheTypes) düzeltin
+import "@fhevm/solidity/lib/FheTypes.sol"; 
 import "@fhevm/solidity/lib/Impl.sol";
 import "encrypted-types/EncryptedTypes.sol";
 
