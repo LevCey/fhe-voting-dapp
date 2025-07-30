@@ -1,83 +1,30 @@
-import "@fhevm/hardhat-plugin";
-import "@nomicfoundation/hardhat-chai-matchers";
-import "@nomicfoundation/hardhat-ethers";
-import "@nomicfoundation/hardhat-verify";
-import "@typechain/hardhat";
-import "hardhat-deploy";
-import "hardhat-gas-reporter";
-import type { HardhatUserConfig } from "hardhat/config";
-import { vars } from "hardhat/config";
-import "solidity-coverage";
+import { HardhatUserConfig } from "hardhat/config";
+import "@nomicfoundation/hardhat-toolbox";
+import "fhevm-hardhat-plugin"; // FHEVM eklentisini içe aktar
+import "dotenv/config";
 
-import "./tasks/accounts";
-import "./tasks/FHECounter"; // Eğer bu dosya sizde yoksa, bu satırı şimdilik kaldırabilirsiniz veya boş bir dosya oluşturabilirsiniz.
+// Ortam değişkenlerinin yüklendiğinden emin olalım.
+const sepoliaRpcUrl = process.env.SEPOLIA_RPC_URL;
+if (!sepoliaRpcUrl) {
+  throw new Error("Please set your SEPOLIA_RPC_URL in a .env file");
+}
 
-const MNEMONIC: string = vars.get("MNEMONIC", "test test test test test test test test test test test junk");
-const INFURA_API_KEY: string = vars.get("INFURA_API_KEY", "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+const privateKey = process.env.PRIVATE_KEY;
+if (!privateKey) {
+  throw new Error("Please set your PRIVATE_KEY in a .env file");
+}
 
 const config: HardhatUserConfig = {
-  defaultNetwork: "hardhat",
-  namedAccounts: {
-    deployer: 0,
-  },
-  etherscan: {
-    apiKey: {
-      sepolia: vars.get("ETHERSCAN_API_KEY", ""),
-    },
-  },
-  gasReporter: {
-    currency: "USD",
-    enabled: process.env.REPORT_GAS ? true : false,
-    excludeContracts: [],
-  },
+  solidity: "0.8.24",
   networks: {
-    hardhat: {
-      accounts: {
-        mnemonic: MNEMONIC,
-      },
-      chainId: 31337,
-    },
-    anvil: {
-      accounts: {
-        mnemonic: MNEMONIC,
-        path: "m/44'/60'/0'/0/",
-        count: 10,
-      },
-      chainId: 31337,
-      url: "http://localhost:8545",
-    },
     sepolia: {
-      accounts: {
-        mnemonic: MNEMONIC,
-        path: "m/44'/60'/0'/0/",
-        count: 10,
-      },
-      chainId: 11155111,
-      url: `https://sepolia.infura.io/v3/${INFURA_API_KEY}`,
+      url: sepoliaRpcUrl,
+      accounts: [privateKey],
     },
-  },
-  paths: {
-    artifacts: "./artifacts",
-    cache: "./cache",
-    sources: "./contracts",
-    tests: "./test",
-  },
-  solidity: {
-    version: "0.8.24",
-    settings: {
-      metadata: {
-        bytecodeHash: "none",
-      },
-      optimizer: {
-        enabled: true,
-        runs: 800,
-      },
-      evmVersion: "cancun",
+    "zama-devnet": {
+      url: "https://devnet.zama.ai/",
+      accounts: [privateKey],
     },
-  },
-  typechain: {
-    outDir: "types",
-    target: "ethers-v6",
   },
 };
 

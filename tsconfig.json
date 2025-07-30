@@ -6,19 +6,8 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "outDir": "./dist",
-    "declaration": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "rootDir": ".",
-    "types": ["node"]
+    "resolveJsonModule": true
   },
-  "include": [
-    "./scripts",
-    "./test",
-    "./hardhat.config.ts",
-    "./types",
-    "./type-extensions.d.ts" // BURAYI EKLEYİN
-  ],
+  "include": ["scripts", "test", "hardhat.config.ts"],
+  "files": ["hardhat.config.ts"]
 }

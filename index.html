@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FHEVM Confidential Voting</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 2rem auto; padding: 1rem; background-color: #f0f2f5; }
+        .container { background-color: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1, h2 { color: #333; }
+        button { background-color: #007bff; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 16px; margin-top: 10px; }
+        button:disabled { background-color: #cccccc; cursor: not-allowed; }
+        #status, #results { margin-top: 1rem; padding: 1rem; background-color: #e9ecef; border-radius: 5px; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Confidential Voting dApp</h1>
+        <p>Your vote is encrypted and cannot be seen by anyone until the results are revealed.</p>
+        
+        <button id="connectButton">Connect Wallet</button>
+
+        <div id="dapp" class="hidden">
+            <h2 id="walletAddress"></h2>
+            
+            <div id="votingSection">
+                <h3>Cast Your Vote</h3>
+                <input type="radio" id="candidateA" name="candidate" value="0" checked>
+                <label for="candidateA">Candidate A</label><br>
+                <input type="radio" id="candidateB" name="candidate" value="1">
+                <label for="candidateB">Candidate B</label><br>
+                <button id="voteButton">Vote</button>
+            </div>
+
+            <div id="ownerSection" class="hidden">
+                <h3>Owner Actions</h3>
+                <button id="revealButtonA">Reveal Results for A</button>
+                <button id="revealButtonB">Reveal Results for B</button>
+            </div>
+            <div id="status">Status: Ready</div>
+            <div id="results">Results will be shown here.</div>
+        </div>
+    </div>
+    <script src="./dist/bundle.js"></script>
+</body>
+</html>
