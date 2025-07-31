@@ -1,22 +1,38 @@
 {
-  "name": "fhevm-voting-dapp",
+  "name": "fhe-voting-dapp",
   "version": "1.0.0",
-  "description": "A confidential voting dApp using FHEVM and Hardhat",
+  "description": "A complete FHEVM voting dApp demo using Zama.ai's FHEVM",
   "main": "index.js",
   "scripts": {
     "compile": "hardhat compile",
-    "deploy": "hardhat run scripts/deploy.ts --network zama-devnet",
-    "build": "esbuild frontend/index.ts --bundle --outfile=frontend/dist/bundle.js --platform=browser",
-    "serve": "npx http-server ./frontend -p 8080"
+    "test": "hardhat test",
+    "deploy": "hardhat run scripts/deploy.ts --network sepolia",
+    "start": "ts-node src/frontend/index.ts",
+    "demo": "hardhat run scripts/demo.ts",
+    "build": "tsc",
+    "clean": "hardhat clean"
   },
+  "keywords": ["fhevm", "voting", "dapp", "zama", "privacy"],
+  "author": "FHE Voting dApp",
+  "license": "MIT",
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
-    "dotenv": "^17.2.1",
-    "hardhat": "^2.22.2"
+    "@nomicfoundation/hardhat-ethers": "^4.0.0",
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@types/chai": "^4.3.5",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^20.5.0",
+    "chai": "^4.3.7",
+    "ethers": "^6.8.0",
+    "hardhat": "^2.17.0",
+    "mocha": "^10.2.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
   },
   "dependencies": {
-    "esbuild": "^0.20.2",
-    "ethers": "^6.11.1",
-    "fhevmjs": "^0.4.0"
+    "@fhenix/contracts": "^0.7.0",
+    "@fhenix/fhevm": "^0.7.0",
+    "dotenv": "^16.3.1",
+    "inquirer": "^9.2.12",
+    "chalk": "^4.1.2"
   }
-}
+} 

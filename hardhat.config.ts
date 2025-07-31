@@ -1,31 +1,39 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
-import "fhevm-hardhat-plugin"; // FHEVM eklentisini içe aktar
-import "dotenv/config";
+import "@fhenix/hardhat-plugin";
+import * as dotenv from "dotenv";
 
-// Ortam değişkenlerinin yüklendiğinden emin olalım.
-const sepoliaRpcUrl = process.env.SEPOLIA_RPC_URL;
-if (!sepoliaRpcUrl) {
-  throw new Error("Please set your SEPOLIA_RPC_URL in a .env file");
-}
-
-const privateKey = process.env.PRIVATE_KEY;
-if (!privateKey) {
-  throw new Error("Please set your PRIVATE_KEY in a .env file");
-}
+dotenv.config();
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.24",
+  solidity: {
+    version: "0.8.24",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200,
+      },
+    },
+  },
   networks: {
     sepolia: {
-      url: sepoliaRpcUrl,
-      accounts: [privateKey],
+      url: process.env.SEPOLIA_URL || "https://sepolia.infura.io/v3/YOUR-PROJECT-ID",
+      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
+      chainId: 11155111,
     },
-    "zama-devnet": {
-      url: "https://devnet.zama.ai/",
-      accounts: [privateKey],
+    hardhat: {
+      chainId: 1337,
     },
+  },
+  etherscan: {
+    apiKey: process.env.ETHERSCAN_API_KEY,
+  },
+  paths: {
+    sources: "./contracts",
+    tests: "./test",
+    cache: "./cache",
+    artifacts: "./artifacts",
   },
 };
 
-export default config;
+export default config; 
